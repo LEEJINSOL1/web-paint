@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Free MS Paint online alternative. Draw, crop, select, add text, use brushes and shapes, and save images in your browser without installing software.">
+  <meta name="robots" content="index, follow">
+  <meta name="application-name" content="Web Paint">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Web Paint - Free MS Paint Online Alternative">
+  <meta property="og:description" content="Use a Windows Paint style drawing tool directly in your browser. No installation required.">
+  <meta name="twitter:card" content="summary">
+  <title data-i18n="page_title">Web Paint - Free MS Paint Online Alternative</title>
+  <link rel="stylesheet" href="styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Web Paint",
+    "applicationCategory": "GraphicsApplication",
+    "operatingSystem": "Any",
+    "description": "A free MS Paint online alternative for drawing, cropping, selecting, adding text, using brushes and shapes, and saving images in the browser.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "isAccessibleForFree": true
+  }
+  </script>
+</head>
+<body>
+  <h1 class="sr-only">Web Paint - Free MS Paint Online Alternative</h1>
+  <p class="sr-only">Web Paint is an independent project and is not affiliated with Microsoft.</p>
+  <div class="app" id="app">
+    <header class="titlebar">
+      <div class="brand">
+        <div class="paint-icon" aria-hidden="true"></div>
+        <span id="documentTitle" data-i18n="document_title">제목 없음 - 웹 그림판</span>
+      </div>
+      <div class="window-actions" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </div>
+    </header>
+
+    <nav class="menubar" aria-label="상단 메뉴">
+      <button id="fileMenuBtn" data-i18n="file">파일</button>
+      <button id="editMenuBtn" data-i18n="edit">편집</button>
+      <button id="viewMenuBtn" data-i18n="view">보기</button>
+      <a class="nav-link" href="about.html" data-i18n="about">서비스 소개</a>
+      <a class="nav-link" href="feedback.html" data-i18n="feedback">기능개선문의</a>
+      <a class="nav-link" href="privacy.html" data-i18n="privacy">개인정보</a>
+      <a class="nav-link" href="cookies.html" data-i18n="cookies">쿠키 정책</a>
+      <a class="nav-link" href="terms.html" data-i18n="terms">이용약관</a>
+      <div class="quick-actions">
+        <button class="icon-btn" id="saveBtn" title="PNG 저장"></button>
+        <button class="icon-btn" id="openBtn" title="이미지 열기"></button>
+        <button class="icon-btn" id="undoBtn" title="실행 취소"></button>
+        <button class="icon-btn" id="redoBtn" title="다시 실행"></button>
+      </div>
+      <div class="menu-spacer"></div>
+      <select id="languageSelect" class="language-select" title="Language">
+        <option value="auto">Auto</option>
+        <option value="ko">한국어</option>
+        <option value="en">English</option>
+        <option value="ja">日本語</option>
+        <option value="zh">简体中文</option>
+        <option value="zh-TW">繁體中文</option>
+      </select>
+      <button class="icon-btn" id="helpBtn" title="도움말">?</button>
+      <button class="icon-btn" id="settingsBtn" title="설정">⚙</button>
+    </nav>
+
+    <section class="ribbon" aria-label="그림판 도구 모음">
+      <div class="ribbon-group">
+        <button class="large-tool active" data-tool="select" title="선택">
+          <span class="tool-glyph dashed"></span><span>선택</span><span class="split-caret">⌄</span>
+        </button>
+      </div>
+
+      <div class="ribbon-group">
+        <div class="tool-grid">
+          <button class="icon-btn" id="cropBtn" title="자르기"></button>
+          <button class="icon-btn" id="resizeBtn" title="크기 조정"></button>
+          <button class="icon-btn" id="rotateLeftBtn" title="왼쪽 90도 회전"></button>
+          <button class="icon-btn" id="rotateRightBtn" title="오른쪽 90도 회전"></button>
+          <button class="icon-btn" id="flipHBtn" title="가로 대칭"></button>
+          <button class="icon-btn" id="flipVBtn" title="세로 대칭"></button>
+        </div>
+        <span class="group-label" data-i18n="image">이미지</span>
+      </div>
+
+      <div class="ribbon-group">
+        <div class="tool-grid">
+          <button class="icon-btn tool" data-tool="pencil" title="연필"></button>
+          <button class="icon-btn tool" data-tool="brush" title="브러시"></button>
+          <button class="icon-btn tool" data-tool="eraser" title="지우개"></button>
+          <button class="icon-btn tool" data-tool="fill" title="채우기"></button>
+          <button class="icon-btn tool" data-tool="eyedropper" title="색 선택"></button>
+          <button class="icon-btn tool" data-tool="text" title="텍스트">A</button>
+          <button class="icon-btn tool" data-tool="magnifier" title="돋보기"></button>
+          <button class="icon-btn" id="clearBtn" title="전체 지우기"></button>
+        </div>
+        <span class="group-label" data-i18n="tools">도구</span>
+      </div>
+
+      <div class="ribbon-group brush-ribbon-group">
+        <button class="large-tool brush-drop" id="brushMenuBtn" data-tool="brush" title="브러시">
+          <span class="tool-glyph brush-glyph"></span><span>브러시</span><span class="split-caret">⌄</span>
+        </button>
+        <div class="hidden-paint-controls">
+          <select id="brushType" title="브러시 종류">
+            <option value="round">둥근 브러시</option>
+            <option value="flat">납작 브러시</option>
+            <option value="marker">마커</option>
+            <option value="spray">스프레이</option>
+            <option value="calligraphy">붓글씨 브러시</option>
+            <option value="calligraphyPen">붓글씨 펜</option>
+            <option value="airbrush">에어브러시</option>
+            <option value="oil">유화 브러시</option>
+            <option value="crayon">크레용</option>
+            <option value="pencil">일반 연필</option>
+            <option value="watercolor">수채화 브러시</option>
+          </select>
+          <label class="mini-label">굵기 <input id="sizeInput" type="range" min="1" max="80" value="6"></label>
+          <label class="mini-label">불투명도 <input id="opacityInput" type="range" min="5" max="100" value="100"></label>
+        </div>
+        <span class="group-label" data-i18n="brushes">브러시</span>
+      </div>
+
+      <div class="ribbon-group shapes">
+        <div class="shape-grid" id="shapeGrid"></div>
+        <label class="mini-label">윤곽
+          <select id="outlineMode">
+            <option value="stroke">색</option>
+            <option value="none">없음</option>
+          </select>
+        </label>
+        <label class="mini-label">채우기
+          <select id="fillMode">
+            <option value="none">없음</option>
+            <option value="fill">색</option>
+          </select>
+        </label>
+        <span class="group-label" data-i18n="shapes">도형</span>
+      </div>
+
+      <div class="ribbon-group colors">
+        <div class="current-colors">
+          <button id="primaryColorBtn" class="color-current selected" title="색 1"></button>
+          <button id="secondaryColorBtn" class="color-current secondary" title="색 2"></button>
+        </div>
+        <div class="palette" id="palette"></div>
+        <label class="color-picker" title="사용자 지정 색">
+          <input id="customColor" type="color" value="#000000">
+          <span>＋</span>
+        </label>
+        <span class="group-label" data-i18n="colors">색</span>
+      </div>
+
+      <div class="ribbon-group">
+        <button class="large-tool" id="removeBgBtn" title="배경 제거">
+          <span class="tool-glyph sparkle"></span><span>배경제거</span>
+        </button>
+        <button class="large-tool" id="aiBtn" title="로컬 효과">
+          <span class="tool-glyph copilot"></span><span>Copilot</span>
+        </button>
+      </div>
+
+      <div class="ribbon-group">
+        <button class="large-tool" id="layersBtn" title="레이어 패널">
+          <span class="tool-glyph layers"></span><span>레이어</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="text-toolbar" id="textToolbar" aria-label="텍스트 서식">
+      <select id="textFont" title="글꼴">
+        <option value="Calibri">Calibri</option>
+        <option value="Segoe UI">Segoe UI</option>
+        <option value="Malgun Gothic">Malgun Gothic</option>
+        <option value="Arial">Arial</option>
+        <option value="Times New Roman">Times New Roman</option>
+        <option value="Consolas">Consolas</option>
+      </select>
+      <input id="textSize" type="number" min="1" max="300" value="26" list="textSizeOptions" title="글자 크기">
+      <datalist id="textSizeOptions">
+        <option value="12"></option><option value="14"></option><option value="16"></option><option value="18"></option>
+        <option value="26"></option><option value="32"></option><option value="40"></option><option value="56"></option><option value="72"></option>
+      </datalist>
+      <button id="textBold" class="text-format active" title="굵게">가</button>
+      <button id="textItalic" class="text-format slanted" title="기울임">가</button>
+      <button id="textUnderline" class="text-format underline" title="밑줄">가</button>
+      <button id="textStrike" class="text-format strike" title="취소선">가</button>
+      <span class="text-separator"></span>
+      <button id="textAlignLeft" class="text-format active" title="왼쪽 정렬">☰</button>
+      <button id="textAlignCenter" class="text-format" title="가운데 정렬">☰</button>
+      <button id="textAlignRight" class="text-format" title="오른쪽 정렬">☰</button>
+      <label class="text-bg-toggle"><input id="textBgFill" type="checkbox"> 배경 채우기</label>
+    </section>
+
+    <main class="workspace">
+      <aside class="side-controls" aria-label="브러시 빠른 조정">
+        <label class="vertical-control">
+          <span>≋</span>
+          <input id="sideSize" type="range" min="1" max="80" value="6" orient="vertical">
+        </label>
+        <label class="vertical-control accent">
+          <span>●</span>
+          <input id="sideOpacity" type="range" min="5" max="100" value="100" orient="vertical">
+        </label>
+      </aside>
+
+      <section class="canvas-stage" id="stageWrap">
+        <div class="canvas-shell" id="canvasShell">
+          <canvas id="compositeCanvas" width="1080" height="648"></canvas>
+          <canvas id="overlayCanvas" width="1080" height="648"></canvas>
+          <div id="brushPreview" aria-hidden="true"></div>
+          <textarea id="textEditor" spellcheck="false"></textarea>
+          <div class="resize-handles" aria-hidden="true">
+            <span data-handle="nw"></span><span data-handle="n"></span><span data-handle="ne"></span>
+            <span data-handle="w"></span><span data-handle="e"></span>
+            <span data-handle="sw"></span><span data-handle="s"></span><span data-handle="se"></span>
+          </div>
+        </div>
+      </section>
+
+      <aside class="panel layers-panel hidden" id="layersPanel">
+        <div class="panel-head">
+          <strong data-i18n="layers">레이어</strong>
+          <button class="icon-btn" id="closeLayersBtn">×</button>
+        </div>
+        <div class="layer-actions">
+          <button id="addLayerBtn">＋</button>
+          <button id="duplicateLayerBtn">복제</button>
+          <button id="deleteLayerBtn">삭제</button>
+          <button id="mergeLayerBtn">병합</button>
+        </div>
+        <div id="layerList" class="layer-list"></div>
+        <label class="mini-label">레이어 불투명도 <input id="layerOpacity" type="range" min="0" max="100" value="100"></label>
+      </aside>
+    </main>
+
+    <footer class="statusbar">
+      <span id="pointerStatus">준비</span>
+      <span id="selectionStatus"></span>
+      <span id="canvasStatus">1080 × 648px</span>
+      <span class="status-spacer"></span>
+      <button class="icon-btn" id="fitBtn" title="화면에 맞춤"></button>
+      <select id="zoomSelect">
+        <option>25%</option><option>50%</option><option selected>100%</option><option>150%</option><option>200%</option><option>400%</option>
+      </select>
+      <button class="icon-btn" id="zoomOutBtn"></button>
+      <input id="zoomSlider" type="range" min="25" max="400" value="100">
+      <button class="icon-btn" id="zoomInBtn"></button>
+    </footer>
+  </div>
+
+  <div class="dropdown" id="fileMenu">
+    <button id="newFileBtn" data-i18n="new_file">새로 만들기</button>
+    <button id="openFileMenuBtn" data-i18n="open">열기...</button>
+    <button id="importImageBtn" data-i18n="import">가져오기...</button>
+    <button id="savePngBtn">PNG 저장</button>
+    <button id="saveJpegBtn">JPEG 저장</button>
+    <button id="saveWebpBtn">WebP 저장</button>
+    <button id="saveProjectBtn" data-i18n="save_project">프로젝트 저장</button>
+    <button id="openProjectBtn" data-i18n="open_project">프로젝트 열기</button>
+  </div>
+
+  <div class="dropdown" id="editMenu">
+    <button id="copyBtn" data-i18n="copy">복사</button>
+    <button id="pasteBtn" data-i18n="paste">붙여넣기</button>
+    <button id="cutBtn" data-i18n="cut">잘라내기</button>
+    <button id="selectAllBtn" data-i18n="select_all">전체 선택</button>
+    <button id="invertBtn" data-i18n="invert">색 반전</button>
+    <button id="grayscaleBtn" data-i18n="grayscale">흑백</button>
+  </div>
+
+  <div class="dropdown" id="viewMenu">
+    <button id="toggleGridBtn" data-i18n="grid">격자</button>
+    <button id="toggleTransparentBtn" data-i18n="transparent_bg">투명 배경</button>
+    <button id="actualSizeBtn">100%</button>
+    <button id="fullscreenBtn" data-i18n="fullscreen">전체 화면</button>
+  </div>
+
+  <div class="dropdown brush-dropdown" id="brushMenu">
+    <button data-brush="round"><span data-i18n="brush_round">브러시</span><span class="brush-stroke stroke-round"></span></button>
+    <button data-brush="calligraphy"><span data-i18n="brush_calligraphy">붓글씨 브러시</span><span class="brush-stroke stroke-calligraphy"></span></button>
+    <button data-brush="calligraphyPen"><span data-i18n="brush_calligraphy_pen">붓글씨 펜</span><span class="brush-stroke stroke-calligraphy-pen"></span></button>
+    <button data-brush="airbrush"><span data-i18n="brush_air">에어브러시</span><span class="brush-stroke stroke-airbrush"></span></button>
+    <button data-brush="oil"><span data-i18n="brush_oil">유화 브러시</span><span class="brush-stroke stroke-oil"></span></button>
+    <button data-brush="crayon"><span data-i18n="brush_crayon">크레용</span><span class="brush-stroke stroke-crayon"></span></button>
+    <button data-brush="marker"><span data-i18n="brush_marker">마커</span><span class="brush-stroke stroke-marker"></span></button>
+    <button data-brush="pencil"><span data-i18n="brush_pencil">일반 연필</span><span class="brush-stroke stroke-pencil"></span></button>
+    <button data-brush="watercolor"><span data-i18n="brush_watercolor">수채화 브러시</span><span class="brush-stroke stroke-watercolor"></span></button>
+  </div>
+
+  <div class="dropdown select-dropdown" id="selectMenu">
+    <button id="rectSelectBtn"><span class="menu-icon select-rect"></span><span data-i18n="rect_select">직사각형</span></button>
+    <button id="freeSelectBtn"><span class="menu-icon select-free"></span><span data-i18n="free_select">자유 형식</span></button>
+    <button id="selectAllMenuBtn"><span class="menu-icon select-all"></span><span data-i18n="select_all">모두 선택</span><kbd>Ctrl+A</kbd></button>
+    <button id="invertSelectionBtn" disabled><span class="menu-icon select-invert"></span><span data-i18n="invert_selection">선택 영역 반전</span></button>
+    <button id="transparentSelectionBtn"><span></span><span data-i18n="transparent_selection">선택 영역 투명하게</span></button>
+    <button id="deleteSelectionBtn"><span class="menu-icon select-delete"></span><span data-i18n="delete">삭제</span><kbd>Delete</kbd></button>
+  </div>
+
+  <dialog id="resizeDialog">
+    <form method="dialog" class="dialog-body">
+      <h2 data-i18n="resize">크기 조정</h2>
+      <label>너비(px)<input id="resizeWidth" type="number" min="1" value="1080"></label>
+      <label>높이(px)<input id="resizeHeight" type="number" min="1" value="648"></label>
+      <label><input id="resizeImageToo" type="checkbox" checked> 이미지도 함께 크기 조정</label>
+      <menu>
+        <button value="cancel" data-i18n="cancel">취소</button>
+        <button id="applyResizeBtn" value="default" data-i18n="apply">적용</button>
+      </menu>
+    </form>
+  </dialog>
+
+  <dialog id="aiDialog">
+    <form method="dialog" class="dialog-body">
+      <h2>로컬 Copilot</h2>
+      <p>서버 없이 실행되는 빠른 이미지 효과입니다.</p>
+      <button id="softenBtn" value="cancel">부드럽게</button>
+      <button id="sharpenBtn" value="cancel">선명하게</button>
+      <button id="pixelateBtn" value="cancel">픽셀화</button>
+      <button value="cancel" data-i18n="close">닫기</button>
+    </form>
+  </dialog>
+
+  <input id="fileInput" type="file" accept="image/*" hidden>
+  <input id="projectInput" type="file" accept=".webpaint,application/json" hidden>
+  <script src="app.js"></script>
+  <script src="paint-icons.js"></script>
+  <script src="i18n.js"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Send feedback, feature requests, and bug reports for Web Paint, a free MS Paint online alternative.">
+  <meta name="robots" content="index, follow">
+  <title>Feedback - Web Paint</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="info-page" data-page="feedback">
+  <header class="info-header">
+    <nav class="info-nav" aria-label="Page navigation">
+      <a class="info-brand" href="index.html"><span class="paint-icon" aria-hidden="true"></span><strong>Web Paint</strong></a>
+      <div class="info-links"><a href="about.html">About</a><a href="feedback.html">Feedback</a><a href="privacy.html">Privacy</a><a href="cookies.html">Cookies</a><a href="terms.html">Terms</a></div>
+    </nav>
+  </header>
+  <main class="info-shell">
+    <section class="info-hero compact"><p class="info-kicker">Feedback</p><h1>Help make Web Paint feel more natural.</h1><p>Tell us what feels off while using brushes, selections, text boxes, shapes, or saving. Because this is a static hosted site, the form opens your email app.</p></section>
+    <section class="info-two-col"><article class="info-panel"><h2>Helpful report details</h2><ul class="info-checks"><li>Which tool you were using</li><li>Expected behavior versus actual behavior</li><li>Browser name and screen size</li><li>Steps to reproduce, if possible</li></ul></article><article class="info-panel"><h2>Improvement priorities</h2><p>We prioritize UI differences from Windows Paint, selection movement and paste behavior, brush texture, text editing, and responsive layout.</p></article></section>
+    <section class="info-section"><h2>Send Feedback</h2><form class="feedback-form" action="mailto:hello@example.com" method="post" enctype="text/plain"><label>Name or nickname<input name="name" autocomplete="name" placeholder="Example: Paint user"></label><label>Reply email<input name="email" type="email" autocomplete="email" placeholder="you@example.com"></label><label>Feedback type<select name="type"><option>Feature request</option><option>Bug report</option><option>Usability feedback</option><option>Other</option></select></label><label>Message<textarea name="message" required placeholder="Describe the feature or issue in detail."></textarea></label><button type="submit">Send by email</button></form><p class="info-note">Before publishing, replace `hello@example.com` with your real contact email.</p></section>
+    <footer class="info-disclaimer">Web Paint is an independent project and is not affiliated with Microsoft.</footer>
+  </main>
+  <script src="site-pages.js"></script>
+</body>
+</html>

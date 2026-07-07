@@ -1,0 +1,9 @@
+{
+  "name": "web-paint",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Free MS Paint online alternative that runs in the browser.",
+  "scripts": {
+    "start": "node server.js"
+  }
+}

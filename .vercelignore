@@ -1,0 +1,6 @@
+server.js
+*.webpaint
+.git
+.DS_Store
+Thumbs.db
+
