@@ -1,7 +1,7 @@
 (function () {
   const dictionaries = {
     ko: {
-      page_title: "Web Paint - 무료 MS Paint 온라인 대체 도구",
+      page_title: "Web Paint - 무료 온라인 그림판",
       document_title: "제목 없음 - 웹 그림판",
       file: "파일", edit: "편집", view: "보기",
       about: "서비스 소개", feedback: "기능개선문의", privacy: "개인정보", cookies: "쿠키 정책", terms: "이용약관",
@@ -15,7 +15,7 @@
       delete: "삭제", resize: "크기 조정", cancel: "취소", apply: "적용", close: "닫기"
     },
     en: {
-      page_title: "Web Paint - Free MS Paint Online Alternative",
+      page_title: "Web Paint - Free Online Paint Tool",
       document_title: "Untitled - Web Paint",
       file: "File", edit: "Edit", view: "View",
       about: "About", feedback: "Feedback", privacy: "Privacy", cookies: "Cookies", terms: "Terms",

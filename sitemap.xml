@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>/index.html</loc></url>
-  <url><loc>/about.html</loc></url>
-  <url><loc>/feedback.html</loc></url>
-  <url><loc>/privacy.html</loc></url>
-  <url><loc>/cookies.html</loc></url>
-  <url><loc>/terms.html</loc></url>
+  <url><loc>/index.html</loc><priority>1.0</priority></url>
+  <url><loc>/about.html</loc><priority>0.8</priority></url>
+  <url><loc>/feedback.html</loc><priority>0.5</priority></url>
+  <url><loc>/privacy.html</loc><priority>0.4</priority></url>
+  <url><loc>/cookies.html</loc><priority>0.4</priority></url>
+  <url><loc>/terms.html</loc><priority>0.4</priority></url>
 </urlset>
